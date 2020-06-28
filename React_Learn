@@ -1,0 +1,183 @@
+React :
+
+1 - Create React App :
+
+npx create-react-app <project_name>
+
+npx package runner
+
+
+-------------when we want to install package globally
+
+npm install create-react-app -g
+create-react-app <project_name>
+
+
+2 - Components - Components describe a part of the user interface.
+				 It is reusable and can be nested inside other components. 
+
+	1 - Stateless Functional Components
+	2 - Stateful Class Components
+
+3 - Stateless Functional Components
+
+	default name export on component function
+	when export keyword add on compone name directly - we can not change name while calling
+	export const Greet = () => <h1>Hello Amit</h1>
+	
+	import in any other component :
+	import Greet from './Greet'
+	
+	when use export after component, we can use any name while calling.
+	export default Greet;
+	
+	import in any other component :
+	import Greet from './Greet'
+	or
+	import {MyComponent} from './Greet'
+	
+4 - Fragment - Fragment through we can add multiple children withount adding the extra node in the dom.	
+	With <React.Fragment> we can pass key also while we do list data. <React.Fragment key='anyVal'>
+	Other alternative instead of <React.Fragment > we can use empty tah as well (<> </>) but it ahs one limitation, It can not take key param.
+	
+	
+5 - Regular Vs PureComponent
+	
+	1 - Pure Component is work on Class Based Component only.
+	2 - Memo is used for Functional Component to achieve this concept. We need to use React.memo(ComponentName) while export this component.
+	
+6 - Refs - Refs can not be attached to functional Component ,  it always attached to Class Component
+	Forward Refs
+	
+7 - Portals- A way to render children into a dom node that exist the outsidede of dom hierarchy of the parent component,
+8 - EventBubbling with Portals - Either we use portals, events is working as a normal way of child component.
+
+9 - Error Boundary - A class component that implements either one or both of the lifecycle methods getDerivedStateFromError or componentDidCatch
+	becomes an error boundary.
+	
+	The static method getDerivedStateFromError method is used to render a fallback UI after an error is thrown and the componentDidCatch method
+	is used to log the error information.
+	
+10 - High Order Component - Apattern where a function takes a component as an argument and returns a new component.
+
+	const NewComponent = HighOrderComponent(originalcomponent)
+	const EnhancedComponent = HighOrderComponent(originalcomponent)
+	
+	EX - const IronMan = withSuit(TonyStark)
+	
+11 - Render Props - The term "Render Prop" refers to a technique for sharing code between React Components using a prop whose value is a function.
+
+
+12 - Context - Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+	Context have three step process.
+	1 - create the context
+	2 - Provide a context value
+	3 - Consume the context value
+	
+13 - Connect with HTTP : React not provide any libray for HTTP, We can use any other library and install.
+	 npm install axios
+	 
+	 
+	 
+--------------------------------------------React Hooks :---------------------------------------------------
+
+1 - Hooks are a new feature addition in React version 16.8 which allow you to use React features without having to write a class
+	Ex : State of component
+	Hooks don't work inside classes
+	
+	Why Hooks ? 
+		Reason Set 1 :
+			1 - Understand how this keyword works in JavaScript.
+			2 - Remember to bind evebt handlers in class component
+			3 - Classes don't minify very well and make hot reloading very unreliable
+			
+		Reson Set 2 :
+			1 - There is no particular way to reuse stateful component logic
+			2 - HOC and render props patterns do address this problem
+			3 - Makes the code harder to follow
+			4 - There is need a to share stateful logic in a better way
+			
+		Reason Set 3 : 
+			1 - Create components for complex scenarios such as data fetching and subscribing to events
+			2 - Related code is not organized in one place
+			Ex : Data Fetching is usually done in componetDidMount and sometime in componentDidUpdate
+			Ex : Event Listners : We set subscribing in componetDidMount and unsubscribing in componentWillUnmount
+			Because of stateful logic - Cannot break components into smaller ones
+			
+			
+	Noteworthy Points :
+			1 - REact version 16.8 or higher
+			2 - Completely opt in eitheer use class or hooks
+			3 - Hooks don't contain any breaking changes and the release is 100% backword-compatible.
+			4 - Classes won't be removed from React
+			5 - Can't use Hooks inside of a class component
+			6 - Hooks don't replace your existing knowledge of React concepts
+			7 - Instead, Hooks provide a more direct API to the React concepts you already know
+			
+2 - Rules for Hooks : 
+	1 - Only call Hooks at the Top Level
+		Don't call Hooks inside loops, conditions, or nested functions
+		
+	2 - Only call Hooks from React Functions
+		Call them from within React functional components and not just any regular JavaScript Function
+		
+		
+3 - Spread Operator - ...Name
+	It will copy older value and then we can add new vakue, Because hooks can not hold older data.
+	
+4 - useState, useEffect, useContext
+
+5 - useReducer : 
+	1 - useReducer is a hook that is used for state management
+	2 - It is an alternative to useState
+	3 - useReducer is related to reducer functions
+	4 - useReducer have two parameter : useReducer(resducerFunction, initialState)
+	5 - reducerFunction have also two parameter : reducerFunction(currentState, action)
+	6 - And then after that it returns a single value
+			
+6 - UseReducer With useContext - 
+		useReducer : Local State Management
+		Share state between components - Global State Management
+		useReducer + useContext
+		
+7 - useCallback - Use for Performance Optimize
+
+	What ? - useCallback is a hook that will return a memoized version of the callback function that only
+	changes if one of the dependencies has changed.
+	
+	Why ? - It is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders.
+			
+	useCallback((function) , [dependenciesList])
+	
+8 - useMemo -  Use for Performance Optimize
+
+	invokes function and caches it results, So if dependencyList value changed then its calculate data, else return cached value.
+	
+	const val = useMemo((function) , [dependenciesList])
+	
+9 - useRef - 
+
+10- useImperativeHandler
+
+11 - useLayoutEffect
+
+12 - useDebugValue
+
+13 - Custom Hooks - 
+
+	A custom hook is basically a java script function whose name start with "use".
+	A custom hook can also call other Hooks if required.
+	
+	why?
+	Share Logic - Alternative to HOCs and Render Props
+	
+	
+	
+Imp : remove node_modules from app use =  rm -r node_modules
+And install by - npm install
+
+			
+	
+
+	
